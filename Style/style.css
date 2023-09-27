@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&family=Roboto+Condensed:ital,wght@0,400;1,300&display=swap');
+
+body {
+ 
+    font-family: 'Roboto Condensed', sans-serif;
+}/* Styles for the header */
+
+
+html {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+  height: 20%;
+  background-color: #65bf43;
+  color: #192313;
+  padding: 20px;
+}
+
+.first-paragraph {
+    padding: 2%;
+  font-size: 30px; /* Tamanho de fonte maior para o primeiro parágrafo */
+}
+
+.second-paragraph { 
+ 
+padding-left: 2.7%;
+  font-size: 24px; /* Tamanho de fonte menor para o segundo parágrafo */
+}
+
+.logo img {
+  margin-right: 10px;
+}
+
+/* Styles for the navigation list */
+nav ul {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.links {
+    font-family: 'Roboto Condensed', sans-serif;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links ul {
+  display: flex;
+  list-style-type: none;
+  margin-bottom:  10px;
+  padding: 0;
+}
+
+.links ul li {
+  margin-left: 10px;
+}
+
+.links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul li {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.links a:hover {
+    color: #c1c98b;
+    /* Add any other styles you want for the hover effect */
+  }
+/* Styles for the footer */
+
+footer {
+    height: 100px;
+    background-color: #3b6a48;
+    color: #65bf43;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  /* Estilos para a seção de conteúdo do rodapé */
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para cada seção do rodapé */
+  .footer-section {
+    flex: 1;
+    padding: 0 20px; /* Adicionei um espaçamento horizontal entre as seções */
+  }
+  
+  /* Estilos para os títulos das seções */
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px; /* Adicionei um espaçamento inferior aos títulos */
+  }
+  
+  /* Estilos para os links de mídia social e informações de contato */
+  .footer-social a,
+  .footer-contact span {
+    color: #65bf43;
+    text-decoration: none;
+    font-size: 18px;
+    display: block; /* Os links e informações agora estão em blocos separados */
+  }
+  
+  /* Estilos para os ícones */
+  .footer-social i,
+  .footer-contact i {
+    font-size: 24px;
+    margin-right: 10px; /* Adicionei um espaçamento entre o ícone e o texto */
+  }
+  
+  /* Estilo para links de mídia social quando hover */
+  .footer-social a:hover {
+    color: #fff; /* Alterei a cor para branco quando hover */
+  }
+  
