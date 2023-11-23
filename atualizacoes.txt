@@ -1,0 +1,12 @@
+v01
+- Páginas em html
+- CSS para as 3 páginas
+
+v02
+- Ajustes no CSS como fundo de imagens
+- criação dos arquivos php (index.php, equipes.php, entrar.php)
+- definição das funções criaHeader($titulo), criaFooter(), criaEquipe($nome)
+
+v03
+- Atualizamos o sistema de login com uso da senha em md5
+- inserimos a verificação do usuário logado em equipes e no arquivo de sis.login.php trabalhando com o sessão
