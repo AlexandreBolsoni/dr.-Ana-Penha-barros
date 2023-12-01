@@ -44,4 +44,38 @@ Se você é um desenvolvedor ou colaborador interessado em contribuir para este 
 
 ---
 
-Lembre-se de adaptar as datas, informações e instruções conforme necessário para refletir os requisitos específicos do trabalho e da disciplina.
+Claro, aqui estão alguns comandos que podem ser usados para clonar um repositório:
+
+### Clonar um repositório usando HTTPS:
+
+```bash
+git clone https://github.com/nome-de-usuario/nome-do-repositorio.git
+```
+
+Substitua `nome-de-usuario` pelo nome do usuário proprietário do repositório e `nome-do-repositorio` pelo nome do repositório que você deseja clonar.
+
+### Clonar um repositório usando SSH (se a autenticação por chave SSH estiver configurada):
+
+```bash
+git clone git@github.com:nome-de-usuario/nome-do-repositorio.git
+```
+
+Igualmente, substitua `nome-de-usuario` pelo nome do usuário proprietário e `nome-do-repositorio` pelo nome do repositório que você quer clonar.
+
+### Clonar um repositório específico (com um nome diferente para a pasta local):
+
+```bash
+git clone https://github.com/nome-de-usuario/nome-do-repositorio.git nome-da-pasta-local
+```
+
+Neste caso, após o link do repositório, você pode adicionar o nome que deseja para a pasta local que conterá o repositório clonado. Isso é útil quando você deseja nomear a pasta de forma diferente da padrão (que seria o nome do repositório).
+
+### Clonar um repositório usando GitHub CLI:
+
+```bash
+gh repo clone nome-de-usuario/nome-do-repositorio
+```
+
+Se você tiver o GitHub CLI instalado, pode usar esse comando para clonar repositórios diretamente.
+
+Escolha o método que melhor se adequa à sua situação e à forma como você está autenticado para acessar o repositório no GitHub.
