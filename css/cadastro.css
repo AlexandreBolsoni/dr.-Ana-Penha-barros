@@ -1,0 +1,118 @@
+/* Estilos para a div principal */
+.flex-center-row-cadastro {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+/* Estilos para o contêiner do formulário */
+.cadastro {
+  
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para os rótulos do formulário */
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos para os rótulos dos radio buttons */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Estilos para o formulário de cadastro */
+form {
+    margin-top: 20px;
+}
+
+/* Estilos para os campos do formulário */
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Estilos para o botão de submit */
+#btCadastrar {
+    background-color: #2da63f;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos para os cabeçalhos no formulário */
+h2 {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+/* Estilos para o conteúdo específico de paciente e sintoma */
+.paciente,
+.sintoma {
+    display: none;
+}
+
+/* Estilos para o texto do conteúdo específico */
+.paciente p,
+.sintoma p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Estilos para a div principal */
+.flex-center-row-tratamento {
+    margin: 25px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos para o contêiner do formulário */
+.tratamento {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para os cabeçalhos no formulário */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Estilos para os rótulos e inputs do formulário */
+form label,
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}

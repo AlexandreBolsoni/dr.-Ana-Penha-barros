@@ -33,8 +33,8 @@ echo $msg;
 <div class="flex-center-column">
 
     <div class="flex-center-row">
-        <div class="container box-50vw p-2">
-                Cadastre-se no SITE para consultar, <strong>determinar/organizar</strong> seus pacotes do consultorio.
+        <div class="container box-50vw p-2"  style="display: block; margin: 0 auto; text-align: center">
+                Cadastre-se para ter acesso, determinar e organizar seus pacotes com a <br> <strong style="display: block; margin: 0 auto; text-align: center"> DR. Ana penha barros</strong>
             </div>
 
             <div class=" lado-direito flex-center-column">
@@ -45,7 +45,7 @@ echo $msg;
                 <form action="php/site.login.php" method="POST">
                 <fieldset class="fd-center">
                     <p>Sistema de Login</p>
-                    <label class="lb-center">Login ou Email:
+                    <label class="lb-center">login:
                         <input class="in-center" name="login" type="text" placeholder="Insira seu Login">
                     </label>
 

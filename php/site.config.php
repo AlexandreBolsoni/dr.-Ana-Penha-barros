@@ -34,7 +34,8 @@ function criarMenu($usuario) {
     {
         $menu = ' <ul class="flex-center-row">
         <li><a class="efeito-h" href="index.php">Home</a></li>
-        <li><a class="efeito-ah" href="equipes.php">Equipes</a></li>      
+        <li><a class="efeito-ah" href="cadastro.php">Cadastro</a></li>      
+        <li><a class="efeito-ah" href="tratamento.php">Tratamento</a></li>      
         <li class="usuario-logado">
             <iconify-icon icon="lucide:user-cog"></iconify-icon> 
              '.$usuario.'
@@ -46,8 +47,9 @@ function criarMenu($usuario) {
     } else {
         $menu = ' <ul class="flex-center-row">
         <li><a class="efeito-h" href="index.php">Home</a></li>
-        <li><a class="efeito-ah" href="equipes.php">Equipes</a></li>
-        <li>
+        <li><a class="efeito-ah" href="cadastro.php">Cadastro</a></li>
+        <li><a class="efeito-ah" href="tratamento.php">Tratamento</a></li>
+    <li>
         <a class="efeito-h" href="entrar.php">
             Entrar</a>
         </li>
@@ -65,9 +67,11 @@ function criaHeader($titulo, $usuario = "") {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MetasTSI : '.$titulo.'</title>
+        <title>Ana Penha Barros : '.$titulo.'</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/cadastro.css">
+       
         
         <link rel="icon" href="img/logo.PNG" type="image/png">
     
@@ -79,9 +83,8 @@ function criaHeader($titulo, $usuario = "") {
         <header>
             <div class="logo flex-center-row">
                 <img src="img/logo.svg" alt="Logo MetaTSI" width="50" height="50"> 
-                <div>DR. Ana Penha - </div>
-                <div>Terapeuta Ocupacional</div>
-                </div>
+                <div>Dr. Ana Penha Barros - Terapeuta Ocupacional</div>
+            </div>
     
             '.criarMenu($usuario).'
            
@@ -107,11 +110,6 @@ function criaFooter() {
 </html>';
 }
 
-function criaEquipe($nome) {
-    return '<div class="equipe flex-center-column mr-2 p-2">
-    <img class="img-equipe efeito-h" src="img/equipe.svg" alt="Logo MetaTSI" width="100" height="100"> 
-    <p>Equipe '.$nome.'</p>
-    </div>';   
-}
+
 
 ?>
