@@ -1,59 +1,47 @@
-Claro, aqui está um exemplo de um arquivo README para o site da terapeuta ocupacional da região, Dra. Ana Penha Barros:
 
-# Site da Terapeuta Ocupacional Dra. Ana Penha Barros
 
-Bem-vindo ao site da Terapeuta Ocupacional Dra. Ana Penha Barros! Este repositório contém informações importantes sobre o site, seu conteúdo e como ele está organizado.
+## Trabalho Interdisciplinar - Desenvolvimento de Sistema
 
-## Sobre Dra. Ana Penha Barros
+### Introdução
 
-Dra. Ana Penha Barros é uma terapeuta ocupacional altamente qualificada e experiente que oferece serviços profissionais na região. Seu foco principal é melhorar a qualidade de vida de seus pacientes, ajudando-os a alcançar independência e funcionalidade em suas atividades diárias.
+O trabalho interdisciplinar abrange as disciplinas de Análise de Sistemas, Programação Orientada a Objetos, Programação Back-End I e UX Design. A nota deste trabalho será utilizada por cada disciplina como caráter avaliativo do semestre.
 
-## Conteúdo do Site
+#### Objetivo
 
-O site da Dra. Ana Penha Barros oferece uma variedade de informações e recursos para pacientes, familiares e interessados em terapia ocupacional. Aqui está uma visão geral do que você encontrará neste site:
+Desenvolver um pequeno sistema que atenda às especificações do trabalho, aplicando os conhecimentos adquiridos ao longo do semestre. Este trabalho é individual e requer a demonstração prática dos conceitos aprendidos.
 
-1. **Sobre**: Uma breve introdução sobre Dra. Ana Penha Barros, sua formação, experiência e filosofia de trabalho.
+#### Prazos
 
-2. **Serviços**: Uma lista dos serviços de terapia ocupacional oferecidos, juntamente com descrições detalhadas de cada serviço.
+- **Até 13/12/2023 (Quarta-feira):** Envio pelo AVA do link para acesso à pasta compartilhada contendo o Diagrama de Classes, Protótipo Figma e Códigos da aplicação desenvolvida.
+- **14 e 15/12/2023 (Quinta e Sexta-feira):** Entrevistas com Professores.
 
-3. **Perguntas Frequentes (FAQ)**: Respostas para perguntas comuns sobre terapia ocupacional, como funciona o processo, quem pode se beneficiar dela e muito mais.
+#### Descrição do Trabalho
 
-4. **Blog**: Artigos informativos sobre saúde ocupacional, dicas de bem-estar e histórias de sucesso de pacientes.
+Desenvolver um sistema utilizando um tema de escolha do estudante. Os critérios de escolha do tema incluem a aplicação do conceito de POO de herança, relação "1 para muitos" entre classes, entre outros requisitos detalhados no documento.
 
-5. **Contato**: Informações de contato, incluindo formulário de contato, endereço do consultório e horário de funcionamento.
+#### Documentos a serem entregues
 
-6. **Recursos**: Links úteis, referências e material de leitura recomendado relacionado à terapia ocupacional.
+- **Diagrama de Classes:** Inicialmente desenvolva este documento para orientar as demais entregas.
+- **Protótipo Figma:** Protótipo das interfaces do sistema.
+- **Implementação do sistema usando HTML, CSS, JS e PHP:**
+  - **CRUD:** Adição, remoção, consulta e atualização de registros conforme o tema escolhido.
+  - **Botão de Vinculação:** Para o relacionamento "1 para muitos".
+  - **Botão de Filtro:** Exibição de registros vinculados a um atributo do sistema.
+- **Princípios de Orientação a Objetos:**
+  - Classes encapsuladas.
+  - Implementação de métodos `toString()` em todas as classes.
+  - Uso eficiente do `toString()` nas subclasses, utilizando o da superclasse sempre que possível para favorecer o reuso de código.
 
-## Como Contribuir
+### Como Contribuir
 
-Se você é um desenvolvedor ou colaborador interessado em contribuir para este site, aqui estão algumas diretrizes importantes:
+Se você é um desenvolvedor ou colaborador interessado em contribuir para este trabalho, siga as diretrizes abaixo:
 
-- Use o git para controlar as mudanças no código-fonte do site.
-- Crie uma branch separada para cada nova funcionalidade ou correção de bug.
-- Certifique-se de seguir as melhores práticas de design e codificação web.
-- Mantenha o conteúdo atualizado e preciso, especialmente informações de contato e serviços oferecidos.
-- Colabore de forma eficaz com outros colaboradores, se houver, através de pull requests e revisões de código.
+- Utilize o controle de versão git para gerenciar as mudanças no código-fonte do sistema.
+- Crie uma branch separada para cada parte do sistema ou nova funcionalidade.
+- Siga as melhores práticas de desenvolvimento web e de POO.
+- Mantenha o código organizado e documentado.
+- Colabore eficientemente com outros colaboradores, se aplicável, através de revisões e feedback construtivo.
 
-## Como Executar o Site Localmente
+---
 
-Se você deseja executar este site localmente para fins de desenvolvimento ou teste, siga estas etapas:
-
-1. Clone este repositório em sua máquina local usando o seguinte comando:
-
-   ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
-   ```
-
-2. Navegue até o diretório do projeto:
-
-   ```bash
-   cd nome-do-repositorio
-   ```
-
-3. Abra o arquivo `index.html` no seu navegador da web favorito.
-
-## Feedback e Suporte
-
-Se você tiver alguma dúvida, feedback ou precisar de suporte, sinta-se à vontade para entrar em contato conosco através do formulário de contato no site ou por e-mail em [Bolsoni161@gmail.com](mailto:Bolsoni161@gmail.com).
-
-Obrigado por visitar o site da Terapeuta Ocupacional Dra. Ana Penha Barros! Esperamos que você encontre as informações e recursos úteis para suas necessidades de saúde ocupacional.
+Lembre-se de adaptar as datas, informações e instruções conforme necessário para refletir os requisitos específicos do trabalho e da disciplina.
