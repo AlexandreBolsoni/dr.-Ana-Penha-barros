@@ -6,7 +6,7 @@
     exit(); // Importante encerrar a execução após redirecionar
   }
 
-  include 'php/site.config.php';
+  require_once 'php/site.config.php';
 
   criaHeader('tratamento', $_SESSION["login"]);
   ?>

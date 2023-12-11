@@ -1,33 +1,94 @@
 <?php
 
+
 function getUsuario($login, $senha_md5) {
-
-    include './site.conexao.php';
-    
-    $sql = "SELECT * FROM `usuarios` WHERE (`login` LIKE '$login' OR `email` LIKE '$login') AND `senha` LIKE '$senha_md5';";
+    require_once '../conexao/site.conexao.php';
     
 
-    $result = mysqli_query($conn, $sql);    
+
+    $db = new DatabaseConnection("localhost", "root", "", "trabalho_interdiciplinar");
+    $conn = $db->getConnection(); // Obtendo a conexão do objeto $db
+
+    $sql = "SELECT * FROM `usuarios` WHERE (`login` LIKE ? OR `email` LIKE ?) AND `senha` LIKE ?;";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "sss", $login, $login, $senha_md5);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
     if (mysqli_num_rows($result) > 0) {
-    
         $row = mysqli_fetch_assoc($result);
-       // print_r($row);
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
         return $row;
-        /*
-        $id = $row["id"];
-        $nome = $row["nome"];
-        $email = $row["email"];    
-        $senha = $row["senha"];    
-        */
-    
     } else {
-       return null;
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
+        return null;
     }
-    
-    mysqli_close($conn);
-
 }
 
+// Função para criar estilos CSS inline
+function criaEstilosCSS()
+{
+    echo '<style>
+        table {
+            width: 70%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        form p {
+            form p {
+                margin-bottom: 15px;
+                font-weight: bold;
+            }
+    
+            form input[type="text"],
+            form input[type="number"],
+            form textarea {
+                width: calc(100% - 20px);
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+    
+
+            #btExcluir {
+                background-color: #ff5c5c;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+            
+            #btExcluir:hover {
+                background-color: #e04848;
+            }
+            
+        </style>';
+    }
 function criarMenu($usuario) {
     $menu = "";
     if($usuario != "")
@@ -36,6 +97,7 @@ function criarMenu($usuario) {
         <li><a class="efeito-h" href="index.php">Home</a></li>
         <li><a class="efeito-ah" href="cadastro.php">Cadastro</a></li>      
         <li><a class="efeito-ah" href="tratamento.php">Tratamento</a></li>      
+        <li><a class="efeito-ah" href="listaPaciente.php">lista de Pacientes</a></li>      
         <li class="usuario-logado">
             <iconify-icon icon="lucide:user-cog"></iconify-icon> 
              '.$usuario.'
@@ -49,6 +111,7 @@ function criarMenu($usuario) {
         <li><a class="efeito-h" href="index.php">Home</a></li>
         <li><a class="efeito-ah" href="cadastro.php">Cadastro</a></li>
         <li><a class="efeito-ah" href="tratamento.php">Tratamento</a></li>
+        <li><a class="efeito-ah" href="listaPaciente.php">lista de Pacientes</a></li>
     <li>
         <a class="efeito-h" href="entrar.php">
             Entrar</a>

@@ -1,5 +1,5 @@
 <?php
-include 'php/site.config.php';
+require_once 'php/site.config.php';
 
 $erro = @$_GET['error'];
 $sucesso = @$_GET['sucesso'];

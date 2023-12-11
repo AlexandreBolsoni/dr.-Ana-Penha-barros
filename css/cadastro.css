@@ -60,11 +60,7 @@ h2 {
     font-size: 24px;
 }
 
-/* Estilos para o conteúdo específico de paciente e sintoma */
-.paciente,
-.sintoma {
-    display: none;
-}
+
 
 /* Estilos para o texto do conteúdo específico */
 .paciente p,
@@ -115,4 +111,27 @@ form select {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
 }

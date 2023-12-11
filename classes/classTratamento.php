@@ -1,6 +1,6 @@
 <?php
-include 'classPessoa.php';
-include '../php/site.conexao.php';
+require_once 'classProfissional.php';
+
 class Tratamento
 {
     private $codTratamento;
@@ -48,20 +48,5 @@ class Tratamento
     {
         $this->codTratamento = $codTratamento;
     }
-    public static function buscarTratamentosNoBanco($conn) {
-        $query = "SELECT * FROM Tratamento";
-        $result = $conn->query($query);
 
-        $tratamentos = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                // Recupere o Paciente associado ao Tratamento, se necessário
-                // Crie o objeto Tratamento e adicione à lista de tratamentos
-                // Exemplo: $tratamento = new Tratamento(/* Dados do Tratamento */);
-                //          $tratamentos[] = $tratamento;
-            }
-        }
-
-        return $tratamentos;
-    }
 }

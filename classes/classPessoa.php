@@ -1,6 +1,6 @@
 <?php
-include '../php/site.conexao.php';
- class Pessoa {
+
+class Pessoa {
     private $codPessoa;
     protected $nome;
     protected $cpf;
@@ -13,7 +13,9 @@ include '../php/site.conexao.php';
     public function getCodPessoa() {
         return $this->codPessoa;
     }
-
+public function setCodPessoa($codPessoa){
+    $this->codPessoa = $codPessoa;
+}
     public function getNome() {
         return $this->nome;
     }
@@ -21,18 +23,8 @@ include '../php/site.conexao.php';
     public function getCpf() {
         return $this->cpf;
     }
-    public static function buscarPessoasNoBanco($conn) {
-        $query = "SELECT * FROM Pessoa";
-        $result = $conn->query($query);
-
-        $pessoas = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $pessoa = new Pessoa($row['nome'], $row['cpf']);
-                $pessoas[] = $pessoa;
-            }
-        }
-
-        return $pessoas;
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
     }
+   
 }
