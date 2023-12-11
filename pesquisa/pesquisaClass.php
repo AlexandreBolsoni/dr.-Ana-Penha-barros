@@ -1,6 +1,11 @@
 <?php
 
+
+require_once '../php/site.config.php';
 require_once '../control/pacienteControl.php';
+
+// Criar uma instância do PacienteControl
+$pacienteControl = new PacienteControl($conn);
 
 // Verificar se o formulário foi submetido
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,18 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Obter o CPF submetido no formulário
         $cpf = $_POST['cpf'];
 
-        // Criar uma instância do PacienteControl
-        $pacienteControl = new PacienteControl($conn);
-
         // Chamar a função buscarPacientePorCPF do PacienteControl com o CPF fornecido
         $paciente = $pacienteControl->buscarPacientePorCPF($cpf);
 
-        // Armazenar os dados do paciente na sessão
-        session_start();
-        $_SESSION['paciente'] = $paciente;
-
-        // Redirecionar de volta para o index.php
-        header('Location: ../index.php');
-        exit();
+        // Verificar se o paciente foi encontrado
+        if ($paciente !== null) {
+            // O paciente foi encontrado, exibir os dados em uma tabela HTML
+            echo "<h2>Dados do Paciente</h2>";
+            echo "<table border='1'>";
+            echo "<tr><th>Nome</th><th>CPF</th><th>Sintomas</th></tr>";
+            echo "<tr><td>{$paciente->getNome()}</td><td>{$paciente->getCpf()}</td><td>{$paciente->getSintomas()}</td></tr>";
+            echo "</table>";
+        } else {
+            // Se o paciente não foi encontrado, exibir uma mensagem
+            echo "Paciente não encontrado.";
+        }
     }
 }
