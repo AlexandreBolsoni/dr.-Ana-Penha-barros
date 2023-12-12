@@ -8,11 +8,12 @@
 }
 
 body {
-    height: 100vh;
+   
    display: flex;
    flex-direction: column;
 }
 main {
+    min-height: 100vh;
     flex-grow: 1;
 }
 
@@ -82,25 +83,6 @@ button {
     padding: 20px;
 }
 
-.equipe {
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-}
-
-.equipe p {
-    margin-top: 10px;
-}
-
-
-.metas {
-    background-color: #d9d9d9;
-    min-height: 50vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 .img-border {
     border-radius: 50%;
@@ -210,7 +192,7 @@ main .container {
 
 footer {
     background-color: #2da63f;
-
+height: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -59,26 +59,7 @@ class PacienteControl
         }
     }
 
-    public function listarObj()
-    {
-        $listaPacientes = [];
-
-        $query = "SELECT pe.codPessoa, pe.nome, pe.cpf, p.sintomas 
-                  FROM paciente p
-                  INNER JOIN pessoa pe ON p.codPessoa = pe.codPessoa";
-        $result = $this->conexao->query($query);
-
-        while ($row = $result->fetch_assoc()) {
-            $paciente = new Paciente($row['nome'], $row['cpf'], $row['sintomas']);
-            $paciente->setCodPessoa($row['codPessoa']);
-
-            $listaPacientes[] = $paciente;
-        }
-
-        return $listaPacientes;
-    }
-
-
+    // Método para atualizar um paciente
     public function atualizar(Paciente $paciente)
     {
         $codPessoa = $paciente->getCodPessoa();
@@ -101,119 +82,48 @@ class PacienteControl
             // Tratamento de erro
         }
     }
-
-    public function deletarPorCPF($cpf)
-    {
-
-        $consultaCodigoPessoa = $this->conexao->prepare("SELECT codPessoa FROM pessoa WHERE cpf = ?");
-        $consultaCodigoPessoa->bind_param("s", $cpf);
-        $consultaCodigoPessoa->execute();
-        $resultadoConsulta = $consultaCodigoPessoa->get_result();
-
-        if ($resultadoConsulta->num_rows > 0) {
-            $row = $resultadoConsulta->fetch_assoc();
-            $codPessoa = $row['codPessoa'];
-
-            $excluiSessao = $this->conexao->prepare("DELETE sessao FROM sessao
-            JOIN tratamento ON sessao.codTratamento = tratamento.codTratamento
-            JOIN paciente ON tratamento.codPessoa = paciente.codPessoa
-            WHERE paciente.codPessoa = ?");
-            $excluiSessao->bind_param("i", $codPessoa);
-            $excluiSessao->execute();
-
-            $excluiTratamento = $this->conexao->prepare("DELETE FROM tratamento 
-            WHERE codPessoa = ?");
-            $excluiTratamento->bind_param("i", $codPessoa);
-            $excluiTratamento->execute();
-
-            $excluiPaciente = $this->conexao->prepare("DELETE FROM paciente WHERE codPessoa = ?");
-            $excluiPaciente->bind_param("i", $codPessoa);
-            $excluiPaciente->execute();
-
-            if ($excluiSessao && $excluiTratamento && $excluiPaciente) {
-                echo "Paciente e dados relacionados excluídos com sucesso.";
-                // Redirecionamento ou retorno de sucesso
-            } else {
-                echo "Falha ao excluir o paciente e dados relacionados.";
-                // Tratamento de erro
+    
+    public function obterSessoesPorTratamento($codTratamento) {
+        $sessoes = [];
+    
+        $query = "SELECT * FROM sessao WHERE codTratamento = ?";
+        
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bind_param("i", $codTratamento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $sessoes[] = $row;
             }
-        } else {
-            echo "Não foi encontrado um paciente com esse CPF.";
-            // Tratamento para caso o CPF não seja encontrado
         }
+    
+        return $sessoes;
     }
-    public function buscarPacientePorCPF($cpf)
-    {
-        $consulta = $this->conexao->prepare("SELECT * FROM pessoa WHERE cpf = ?");
-        $consulta->bind_param("s", $cpf);
-        $consulta->execute();
-        $resultado = $consulta->get_result();
     
-        if ($resultado->num_rows > 0) {
-            $dadosPessoa = $resultado->fetch_assoc();
+    public function obterTratamentosPorCPF($cpfPesquisado) {
+        $tratamentos = [];
     
-            $nome = $dadosPessoa['nome'];
-            $cpf = $dadosPessoa['cpf'];
+        $query = "SELECT t.* FROM tratamento t
+                  INNER JOIN paciente p ON t.codPessoa = p.codPessoa
+                  INNER JOIN pessoa pe ON p.codPessoa = pe.codPessoa
+                  WHERE pe.cpf = ?";
+        
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bind_param("s", $cpfPesquisado);
+        $stmt->execute();
+        $result = $stmt->get_result();
     
-            $consultaSintomas = $this->conexao->prepare("SELECT sintomas FROM paciente WHERE codPessoa = ?");
-            $consultaSintomas->bind_param("i", $dadosPessoa['codPessoa']);
-            $consultaSintomas->execute();
-            $resultadoSintomas = $consultaSintomas->get_result();
-    
-            $sintomas = $resultadoSintomas->num_rows > 0 ? $resultadoSintomas->fetch_assoc()['sintomas'] : '';
-    
-            return new Paciente($nome, $cpf, $sintomas);
-        } else {
-            return null;
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $tratamentos[] = $row;
+            }
         }
+    
+        return $tratamentos;
     }
+    
+    
 
-
-    //     $query = "SELECT 
-    //                 pessoa.nome AS Nome,
-    //                 pessoa.cpf AS CPF,
-    //                 paciente.sintomas AS Sintomas,
-    //                 sessao.qtdSessaoFisio AS Qtd_Sessao_Fisio,
-    //                 sessao.qtdSessaoPsico AS Qtd_Sessao_Psico
-    //             FROM  
-    //                 pessoa
-    //             JOIN 
-    //                 paciente ON pessoa.codPessoa = paciente.codPessoa
-    //             JOIN 
-    //                 tratamento ON paciente.codPessoa = tratamento.codPessoa
-    //             JOIN 
-    //                 sessao ON tratamento.codTratamento = sessao.codTratamento
-    //             JOIN 
-    //                 pessoa AS pessoa_profissional ON sessao.codProfissional = pessoa_profissional.codPessoa;";
-
-    //     $result = $this->conexao->query($query);
-
-    //     if ($result) {
-    //         $html = '<table border="1">
-    //                     <tr>
-    //                         <th>Nome</th>
-    //                         <th>CPF</th>
-    //                         <th>Sintomas</th>
-    //                         <th>Qtd Sessão Fisio</th>
-    //                         <th>Qtd Sessão Psico</th>
-    //                     </tr>';
-
-    //         while ($row = $result->fetch_assoc()) {
-    //             $html .= '<tr>';
-    //             $html .= '<td>' . $row['Nome'] . '</td>';
-    //             $html .= '<td>' . $row['CPF'] . '</td>';
-    //             $html .= '<td>' . $row['Sintomas'] . '</td>';
-    //             $html .= '<td>' . $row['Qtd_Sessao_Fisio'] . '</td>';
-    //             $html .= '<td>' . $row['Qtd_Sessao_Psico'] . '</td>';
-    //             $html .= '</tr>';
-    //         }
-
-    //         $html .= '</table>';
-    //     } else {
-    //         // Tratar erros na consulta SQL, se necessário
-    //         $html = '<p>Não foi possível gerar a tabela.</p>';
-    //     }
-
-    //     return $html;
-    // }
 }

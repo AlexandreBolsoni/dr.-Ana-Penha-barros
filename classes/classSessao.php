@@ -2,31 +2,25 @@
 require_once 'classTratamento.php';
 require_once 'classProfissional.php';
 
-class Sessao
-{
-    private $codSessao;
+class Sessao{
     private $duracao;
     private $descricao;
     private $qtdSessaoFisio;
     private $qtdSessaoPsico;
     private $profissional;
 
-    public function __construct($duracao, $descricao, $profissional, $qtdSessaoFisio, $qtdSessaoPsico)
-    {
-        $this->duracao = $duracao;
-        $this->descricao = $descricao;
-        $this->qtdSessaoFisio = $qtdSessaoFisio;
-        $this->qtdSessaoPsico = $qtdSessaoPsico;
-        if ($profissional instanceof Profissional) {
-            $this->profissional = $profissional;
-        }
-    }
-    public function getCodSessao(){
-        return $this->codSessao;
-    }
-    public function setCodSessao($codSessao){
-        $this->codSessao = $codSessao;
-    }
+   public function __construct($duracao, $descricao, $profissional, $qtdSessaoFisio, $qtdSessaoPsico, $tratamento)
+   {
+       $this->duracao = $duracao;
+       $this->descricao = $descricao;
+       $this->qtdSessaoFisio = $qtdSessaoFisio;
+       $this->qtdSessaoPsico = $qtdSessaoPsico;
+       if ($profissional instanceof Profissional) {
+           $this->profissional = $profissional;
+       }
+      
+   }
+   
     // Getter para $duracao
     public function getDuracao()
     {

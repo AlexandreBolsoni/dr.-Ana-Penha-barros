@@ -1,33 +1,43 @@
+
 <?php
-
-
 require_once '../php/site.config.php';
 require_once '../control/pacienteControl.php';
 
-// Criar uma instância do PacienteControl
-$pacienteControl = new PacienteControl($conn);
+criaEstilosCSS();
+if (isset($_POST['cpf'])) {
+    $cpfPesquisado = $_POST['cpf'];
 
-// Verificar se o formulário foi submetido
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar se o campo "cpf" está definido no formulário
-    if (isset($_POST['cpf'])) {
-        // Obter o CPF submetido no formulário
-        $cpf = $_POST['cpf'];
+    $PacienteControl = new PacienteControl($conn);
 
-        // Chamar a função buscarPacientePorCPF do PacienteControl com o CPF fornecido
-        $paciente = $pacienteControl->buscarPacientePorCPF($cpf);
+    $tratamentos = $PacienteControl->obterTratamentosPorCPF($cpfPesquisado);
 
-        // Verificar se o paciente foi encontrado
-        if ($paciente !== null) {
-            // O paciente foi encontrado, exibir os dados em uma tabela HTML
-            echo "<h2>Dados do Paciente</h2>";
-            echo "<table border='1'>";
-            echo "<tr><th>Nome</th><th>CPF</th><th>Sintomas</th></tr>";
-            echo "<tr><td>{$paciente->getNome()}</td><td>{$paciente->getCpf()}</td><td>{$paciente->getSintomas()}</td></tr>";
-            echo "</table>";
-        } else {
-            // Se o paciente não foi encontrado, exibir uma mensagem
-            echo "Paciente não encontrado.";
+    // Processamento dos tratamentos obtidos
+    if (!empty($tratamentos)) {
+        
+        echo "<table border='1'>";
+        echo "<tr><th>Duração</th><th>Descrição</th><th>Quantidade Sessão Fisio</th><th>Quantidade Sessão Psico</th></tr>";
+
+        foreach ($tratamentos as $tratamento) {
+            $codTratamento = $tratamento['codTratamento'];
+            $sessoes = $PacienteControl->obterSessoesPorTratamento($codTratamento);
+
+            foreach ($sessoes as $sessao) {
+                echo "<tr>";
+                echo "<td>" . $sessao['duracao'] . "</td>";
+                echo "<td>" . $sessao['descricao'] . "</td>";
+                echo "<td>" . $sessao['qtdSessaoFisio'] . "</td>";
+                echo "<td>" . $sessao['qtdSessaoPsico'] . "</td>";
+              
+                echo "</tr>";
+                echo "<br>";
+                echo "<br>";
+              
+            }
         }
+
+        echo "</table>";
+        echo "<a href='../index.php'>Voltar</a>";
+    } else {
+        echo "Nenhum tratamento encontrado para o CPF informado.";
     }
 }

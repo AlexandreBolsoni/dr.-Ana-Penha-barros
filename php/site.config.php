@@ -32,18 +32,20 @@ function criaEstilosCSS()
 {
     echo '<style>
         table {
+            margin: 30px;
             width: 70%;
             border-collapse: collapse;
         }
 
         th, td {
-            padding: 8px;
+            padding: 12px 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
 
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
         }
 
         tr:nth-child(even) {
@@ -55,40 +57,55 @@ function criaEstilosCSS()
         }
 
         form p {
-            form p {
-                margin-bottom: 15px;
-                font-weight: bold;
-            }
-    
-            form input[type="text"],
-            form input[type="number"],
-            form textarea {
-                width: calc(100% - 20px);
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                box-sizing: border-box;
-            }
-    
+            margin-bottom: 15px;
+            font-weight: bold;
 
-            #btExcluir {
-                background-color: #ff5c5c;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-weight: bold;
-                transition: background-color 0.3s ease;
-            }
+        }
+    
+        form input[type="text"],
+        form input[type="number"],
+        form textarea {
+            margin: 0 auto  ;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #btExcluir {
+            background-color: #ff5c5c;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
             
-            #btExcluir:hover {
-                background-color: #e04848;
-            }
-            
-        </style>';
-    }
+        #btExcluir:hover {
+            background-color: #e04848;
+        }
+
+        /* Estilo para o link "Voltar" */
+        a {
+            margin: 20px auto;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #2da63f;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 10px;
+          
+        }
+
+      
+    </style>';
+}
+
 function criarMenu($usuario) {
     $menu = "";
     if($usuario != "")

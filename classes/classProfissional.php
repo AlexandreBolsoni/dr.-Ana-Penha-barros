@@ -5,8 +5,7 @@ class Profissional  extends Pessoa {
       private $especializacao;
 
       public function __construct($nome, $cpf, $especializacao) {
-        parent::$nome = $nome;
-        parent::$cpf = $cpf;
+        parent::__construct($nome, $cpf); // Chama o construtor da classe pai
         $this->especializacao = $especializacao;
     }
 
@@ -14,6 +13,7 @@ class Profissional  extends Pessoa {
     public function getEspecializacao() {
         return $this->especializacao;
     }
+
     public function setEspecializacao($especializacao){
         $this->especializacao = $especializacao;
     }

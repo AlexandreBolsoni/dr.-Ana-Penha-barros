@@ -1,7 +1,12 @@
 <?php
-require_once 'php/site.config.php';
+require_once 'php/site.config.php';    
 require_once 'control/tabelaControl.php';
+session_start();
 
+if (!isset($_SESSION["logado"]) || $_SESSION["logado"] == 0) {
+    header('Location: entrar.php?error=Usuário não está LOGADO');
+    exit(); // Importante encerrar a execução após redirecionar
+}
 
 
 // Uso da classe TabelaListagem
@@ -18,7 +23,7 @@ $tabelaListagem->montarTabela();
 <br>
 <br>
 <p>excluir um Paciente:</p>
-<form action="excluir/excluir_paciente.php" method="post">
+<form action="CRUD/excluir_paciente.php" method="post">
 
     <p>CPF: </p>
     <input type="text" name="cpf" placeholder="Digite o CPF"><br><br>

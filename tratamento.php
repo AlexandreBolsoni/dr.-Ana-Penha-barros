@@ -14,7 +14,7 @@
   <div class="flex-center-row-tratamento">
     <div class="tratamento">
       <h2>Adicionar Tratamento</h2>
-      <form action="parteCadastro/cadastrar_tratamento.php" method="POST">
+      <form action="CRUD/cadastrar_tratamento.php" method="POST">
         <label for="cpfPaciente">CPF do Paciente:</label>
         <input type="text" id="cpfPaciente" name="cpfPaciente" required><br><br>
 

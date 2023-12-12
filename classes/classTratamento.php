@@ -1,52 +1,43 @@
 <?php
 require_once 'classProfissional.php';
+require_once 'classSessao.php';
 
 class Tratamento
 {
-    private $codTratamento;
-    private $pessoa;
-    private $lstSessoes; // array contendo todas as sessões
+    private $paciente;
+    private $sessao;
 
-    public function __construct($pessoa)
-    {
-        if ($pessoa instanceof Pessoa) {
-            $this->pessoa = $pessoa;
+
+
+    public function __construct($pessoa, $paciente, $sessao){
+        if ($pessoa instanceof Paciente) {
+            $this->paciente = $pessoa;
         }
-
-        $this->lstSessoes = [];
-    }
-
-    public function getCodTratamento()
-    {
-        return $this->codTratamento;
-    }
-
-    public function getPessoa()
-    {
-        return $this->pessoa;
-    }
-
-    public function adicionarSessao($sessao)
-    {
-        $this->lstSessoes[] = $sessao;
-    }
-
-    public function getSessoes()
-    {
-        // Retorna uma cópia do array para evitar manipulações externas indesejadas
-        return $this->lstSessoes;
-    }
-
-    public function setPessoa($pessoa)
-    {
-        if ($pessoa instanceof Pessoa) {
-            $this->pessoa = $pessoa;
+        if ($paciente instanceof Paciente) {
+            $this->paciente = $paciente;
+        }
+        if ($sessao instanceof Sessao) {
+            $this->sessao = $sessao;
         }
     }
-
-    public function setCodTratamento($codTratamento)
+    public function getSessao()
     {
-        $this->codTratamento = $codTratamento;
+        return $this->sessao;
     }
-
+    public function setSessao($sessao)
+    {
+        if ($sessao instanceof Sessao) {
+            $this->sessao = $sessao;
+        }
+    }
+    public function getPaciente()
+    {
+        return $this->paciente;
+    }
+    public function setPaciente($paciente)
+    {
+        if ($paciente instanceof Paciente) {
+            $this->paciente = $paciente;
+        }
+    }
 }

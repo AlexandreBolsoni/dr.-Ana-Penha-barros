@@ -17,7 +17,7 @@ criaHeader('Cadastrar', $_SESSION["login"]);
 
         <!-- Formulário de cadastro de Pessoa e Paciente -->
         <h2>Adicionar Paciente</h2>
-        <form action="parteCadastro/cadastrar_paciente.php" method="post">
+        <form action="CRUD/cadastrar_paciente.php" method="post">
             <br>
             <div class="paciente" id="paciente" style="display: block;">
                 <p> Nome:</p>
@@ -26,8 +26,6 @@ criaHeader('Cadastrar', $_SESSION["login"]);
                 <input type="text" name="cpf" placeholder="Digite o CPF"><br><br>
             </div>
             <div class="sintoma" id="sintoma" style="display: block;">
-                <p> Confirmar CPF: </p>
-                <input type="text" name="cpfPessoa" placeholder="Confirme o CPF"><br><br>
                 <p> Sintomas: </p>
                 <textarea name="sintomas" placeholder="Descreva os sintomas"></textarea><br><br>
             </div>
