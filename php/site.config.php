@@ -88,19 +88,19 @@ function criaEstilosCSS()
         #btExcluir:hover {
             background-color: #e04848;
         }
-
         /* Estilo para o link "Voltar" */
         a {
-            margin: 20px auto;
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            background-color: #2da63f;
-            color: #fff;
-            border-radius: 5px;
-            margin-top: 10px;
-          
+         margin: 20px auto;
+         display: inline-block;
+         padding: 10px 20px;
+         text-decoration: none;
+         background-color: #2da63f;
+         color: #fff;
+         border-radius: 5px;
+         margin-top: 10px;
+      
         }
+     
 
       
     </style>';
@@ -153,7 +153,7 @@ function criaHeader($titulo, $usuario = "") {
         <link rel="stylesheet" href="css/cadastro.css">
        
         
-        <link rel="icon" href="img/logo.PNG" type="image/png">
+        <link rel="icon" href="img\Logomarca (2).jpg" type="image/png">
     
          <!-- Inclua o Iconify Core para lidar com os ícones -->
          <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -162,7 +162,7 @@ function criaHeader($titulo, $usuario = "") {
     <body>
         <header>
             <div class="logo flex-center-row">
-                <img src="img/logo.svg" alt="Logo MetaTSI" width="50" height="50"> 
+                <img src="img/01.png" alt="Logo MetaTSI" width="100" height="50"> 
                 <div>Dr. Ana Penha Barros - Terapeuta Ocupacional</div>
             </div>
     
@@ -174,7 +174,7 @@ function criaHeader($titulo, $usuario = "") {
 }
 
 function criaFooter() {
-    echo '   </main>
+    echo '</main>
     <footer>
         <iconify-icon icon="ic:outline-copyright"></iconify-icon>
         <div>Projeto desenvolvido por alunos do curso de TSI</div>
@@ -182,13 +182,12 @@ function criaFooter() {
             <li><a href="#">Sobre Nós</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
+        &copy; ' . date("Y") . ' Dr. Ana Penha Barros. Todos os direitos reservados.
     </footer>
-
-    <!-- <img src="img/equipe.svg" alt="Meu SVG" width="100" height="100"> -->
-
 </body>
 </html>';
 }
+
 
 
 

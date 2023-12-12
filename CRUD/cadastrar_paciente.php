@@ -7,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obter os dados do formulário
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
-    $cpfPessoa = $_POST['cpfPessoa'];
     $sintomas = $_POST['sintomas'];
 
     // Cria uma instância da classe Paciente

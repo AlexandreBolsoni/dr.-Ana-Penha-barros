@@ -7,7 +7,7 @@
 }
 
 /* Estilos para o contêiner do formulário */
-.cadastro {
+.cadastro, .Editar {
   
     border-radius: 10px;
     border: 1px solid #ccc;

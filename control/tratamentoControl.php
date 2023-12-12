@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once '../conexao/site.conexao.php';
 
 class TratamentoControl {
@@ -42,6 +42,23 @@ class TratamentoControl {
         }
     }
 
+    public function editarSessao($codSessao, $opcao, $duracao, $descricao, $qtdSessaoFisio, $qtdSessaoPsico) {
+        $this->conn->begin_transaction();
+
+        $sqlEditarSessao = "UPDATE Sessao SET codProfissional = ?, duracao = ?, descricao = ?, qtdSessaoFisio = ?, qtdSessaoPsico = ? WHERE codSessao = ?";
+        $stmtEditarSessao = $this->conn->prepare($sqlEditarSessao);
+        $stmtEditarSessao->bind_param("isssii", $opcao, $duracao, $descricao, $qtdSessaoFisio, $qtdSessaoPsico, $codSessao);
+
+        if ($stmtEditarSessao->execute()) {
+            $this->conn->commit();
+            header("Location: ../listaPaciente.php");
+            return "Sessão editada com sucesso!";
+        } else {
+            $this->conn->rollback();
+            return "Erro ao editar sessão: " . $stmtEditarSessao->error;
+        }
+    }
+
     private function getCodPessoa($cpfPaciente) {
         $query = "SELECT codPessoa FROM Pessoa WHERE cpf = ?";
         $stmt = $this->conn->prepare($query);
@@ -55,6 +72,8 @@ class TratamentoControl {
         }
         return null;
     }
+
+
 }
 
 // Resto do código permanece o mesmo...

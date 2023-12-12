@@ -59,71 +59,69 @@ class PacienteControl
         }
     }
 
-    // Método para atualizar um paciente
-    public function atualizar(Paciente $paciente)
-    {
-        $codPessoa = $paciente->getCodPessoa();
-        $nome = $paciente->getNome();
-        $cpf = $paciente->getCpf();
-        $sintomas = $paciente->getSintomas();
-
-        $atualizaPaciente = $this->conexao->prepare("UPDATE pessoa pe
-                                                     INNER JOIN paciente p ON p.codPessoa = pe.codPessoa
-                                                     SET pe.nome = ?, pe.cpf = ?, p.sintomas = ?
-                                                     WHERE pe.codPessoa = ?");
-        $atualizaPaciente->bind_param("sssi", $nome, $cpf, $sintomas, $codPessoa);
-        $atualizaPaciente->execute();
-
-        if ($atualizaPaciente) {
-            echo "Paciente atualizado com sucesso.";
-            // Redirecionamento ou retorno de sucesso
+    public function editarPaciente($cpf, $nome, $sintomas) {
+        // Atualiza o nome na tabela pessoa
+        $query = "UPDATE pessoa SET nome = ? WHERE cpf = ?";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bind_param("ss", $nome, $cpf);
+        $executouNome = $stmt->execute();
+    
+        // Atualiza os sintomas na tabela paciente
+        $query = "UPDATE paciente p INNER JOIN pessoa pe ON p.codPessoa = pe.codPessoa SET p.sintomas = ? WHERE pe.cpf = ?";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bind_param("ss", $sintomas, $cpf);
+        $executouSintomas = $stmt->execute();
+    
+        if ($executouNome && $executouSintomas) {
+            return true; // Sucesso ao editar
         } else {
-            echo "Erro ao atualizar o paciente.";
-            // Tratamento de erro
+            return false; // Falha ao editar
         }
     }
     
-    public function obterSessoesPorTratamento($codTratamento) {
+
+
+
+    public function obterSessoesPorTratamento($codTratamento)
+    {
         $sessoes = [];
-    
+
         $query = "SELECT * FROM sessao WHERE codTratamento = ?";
-        
+
         $stmt = $this->conexao->prepare($query);
         $stmt->bind_param("i", $codTratamento);
         $stmt->execute();
         $result = $stmt->get_result();
-    
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $sessoes[] = $row;
             }
         }
-    
+
         return $sessoes;
     }
-    
-    public function obterTratamentosPorCPF($cpfPesquisado) {
+
+    public function obterTratamentosPorCPF($cpfPesquisado)
+    {
         $tratamentos = [];
-    
+
         $query = "SELECT t.* FROM tratamento t
                   INNER JOIN paciente p ON t.codPessoa = p.codPessoa
                   INNER JOIN pessoa pe ON p.codPessoa = pe.codPessoa
                   WHERE pe.cpf = ?";
-        
+
         $stmt = $this->conexao->prepare($query);
         $stmt->bind_param("s", $cpfPesquisado);
         $stmt->execute();
         $result = $stmt->get_result();
-    
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $tratamentos[] = $row;
             }
         }
-    
+
         return $tratamentos;
     }
-    
-    
-
 }
