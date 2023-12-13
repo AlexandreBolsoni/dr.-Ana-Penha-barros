@@ -8,7 +8,7 @@
 
   require_once 'php/site.config.php';
 
-  criaHeader('tratamento', $_SESSION["login"]);
+  criaHeader('Editar Tratamento', $_SESSION["login"]);
 
   ?>
 

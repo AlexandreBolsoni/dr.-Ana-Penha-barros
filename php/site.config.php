@@ -32,8 +32,9 @@ function criaEstilosCSS()
 {
     echo '<style>
         table {
+            text-align: center;
             margin: 30px;
-            width: 70%;
+            width: 90%;
             border-collapse: collapse;
         }
 
@@ -66,7 +67,7 @@ function criaEstilosCSS()
         form input[type="number"],
         form textarea {
             margin: 0 auto  ;
-            width: 100%;
+        
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -90,12 +91,11 @@ function criaEstilosCSS()
         }
         /* Estilo para o link "Voltar" */
         a {
-         margin: 20px auto;
+         margin: 0 auto;
          display: inline-block;
          padding: 10px 20px;
          text-decoration: none;
-         background-color: #2da63f;
-         color: #fff;
+         color: black;
          border-radius: 5px;
          margin-top: 10px;
       

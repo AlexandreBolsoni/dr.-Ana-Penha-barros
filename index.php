@@ -1,7 +1,7 @@
 <?php
 require_once 'php/site.config.php';
 
-criaHeader('Dr. Ana Penha Barros');
+criaHeader('home');
 ?>
     <div class="flex-center-row">
         <div class="container box-50vw p-2"  style="display: block; margin: 0 auto; text-align: center">

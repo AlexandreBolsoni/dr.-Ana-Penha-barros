@@ -7,13 +7,13 @@ if (!isset($_SESSION["logado"]) || $_SESSION["logado"] == 0) {
     header('Location: entrar.php?error=Usuário não está LOGADO');
     exit(); // Importante encerrar a execução após redirecionar
 }
+// Criação dos estilos CSS para a tabela
 
 
 // Uso da classe TabelaListagem
-criaHeader('Dr. Ana Penha Barros');
-
-// Criação dos estilos CSS para a tabela
+criaHeader('Lista de Pacientes');
 criaEstilosCSS();
+
 
 $conexao = new mysqli("localhost", "root", "", "trabalho_interdiciplinar");
 $tabelaListagem = new TabelaListagem($conexao);

@@ -8,7 +8,7 @@ if (!isset($_SESSION["logado"]) || $_SESSION["logado"] == 0) {
 
 require_once 'php/site.config.php';
 
-criaHeader('Editar', $_SESSION["login"]);
+criaHeader('Editar Paciente', $_SESSION["login"]);
 ?>
 
 <div class="flex-center-row-cadastro">
